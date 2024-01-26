@@ -22,6 +22,14 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(movement * speed); 
     }
 
+    void OnTriggerEnter (Collider other) 
+    {
+       if (other.gameObject.CompareTag("PickUp")) 
+       {
+           other.gameObject.SetActive(false);
+       }
+    }
+
     void OnMove (InputValue movementValue)
     {
         Vector2 movementVector = movementValue.Get<Vector2>();
@@ -29,5 +37,4 @@ public class PlayerController : MonoBehaviour
         movementY = movementVector.y; 
 
     }
-    
 }
